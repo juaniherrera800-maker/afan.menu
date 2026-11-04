@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f0e7" />
+    <title>AFÁN — En la Cuadra</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --cream: #f4f0e7;
+        --paper: #fffdf8;
+        --green: #344738;
+        --dark: #202920;
+        --olive: #92977c;
+        --brown: #a17d5c;
+        --muted: #858174;
+        --line: #e2ddcf;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--cream);
+        color: var(--dark);
+        font-family: "DM Sans", sans-serif;
+      }
+
+      header {
+        height: 78px;
+        padding: 0 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--cream);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .logo {
+        font: 600 30px "Playfair Display";
+        letter-spacing: 5px;
+        color: var(--green);
+      }
+
+      .logo small {
+        display: block;
+        text-align: center;
+        font: 600 9px "DM Sans";
+        letter-spacing: 4px;
+      }
+
+      .header-right {
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: var(--muted);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        align-items: center;
+        gap: 65px;
+        padding: 65px 7%;
+        min-height: 570px;
+      }
+
+      .eyebrow {
+        font-size: 10px;
+        color: var(--brown);
+        letter-spacing: 4px;
+        font-weight: 700;
+      }
+
+      .hero h1 {
+        font: 500 clamp(55px, 6vw, 82px)/1.04 "Playfair Display";
+        color: var(--green);
+        margin: 25px 0;
+      }
+
+      .hero p {
+        color: var(--muted);
+        max-width: 410px;
+        line-height: 1.9;
+        font-size: 14px;
+      }
+
+      .hero-button {
+        display: inline-block;
+        background: var(--green);
+        color: white;
+        text-decoration: none;
+        padding: 17px 27px;
+        margin-top: 30px;
+        font-size: 10px;
+        letter-spacing: 2px;
+        transition: 0.3s;
+      }
+
+      .hero-button:hover {
+        background: var(--brown);
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+      }
+
+      .hero-note {
+        margin-top: 20px;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: var(--brown);
+      }
+
+      .story {
+        background: var(--green);
+        color: var(--cream);
+        text-align: center;
+        padding: 75px 20px;
+      }
+
+      .story span {
+        font-size: 10px;
+        letter-spacing: 4px;
+        color: #cbb99c;
+      }
+
+      .story h2 {
+        font: 400 40px "Playfair Display";
+        margin: 18px 0;
+      }
+
+      .story p {
+        color: #d4d4c8;
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .discount {
+        background: #e6dfce;
+        color: var(--green);
+        text-align: center;
+        padding: 16px;
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+
+      .menu {
+        max-width: 1350px;
+        margin: auto;
+        padding: 80px 7%;
+      }
+
+      .heading {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .heading span {
+        font-size: 10px;
+        letter-spacing: 4px;
+        color: var(--brown);
+      }
+
+      .heading h2 {
+        font: 500 50px "Playfair Display";
+        color: var(--green);
+        margin-top: 12px;
+      }
+
+      .heading p {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 12px;
+      }
+
+      .search {
+        display: block;
+        width: 100%;
+        max-width: 550px;
+        margin: 0 auto 28px;
+        padding: 16px 20px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        font: 13px "DM Sans";
+        outline: none;
+        border-radius: 2px;
+      }
+
+      .search:focus {
+        border-color: var(--green);
+      }
+
+      .categories {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        gap: 9px;
+        padding: 14px 0;
+        margin-bottom: 35px;
+        background: var(--cream);
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .categories::-webkit-scrollbar {
+        display: none;
+      }
+
+      .categories button {
+        flex-shrink: 0;
+        border: 1px solid var(--line);
+        background: transparent;
+        padding: 12px 19px;
+        color: var(--green);
+        font: 11px "DM Sans";
+        cursor: pointer;
+        transition: 0.25s;
+      }
+
+      .categories button.active,
+      .categories button:hover {
+        background: var(--green);
+        color: white;
+        border-color: var(--green);
+      }
+
+      .section-label {
+        font: 500 32px "Playfair Display";
+        color: var(--green);
+        padding-bottom: 15px;
+        margin: 50px 0 22px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-subtitle {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: -12px;
+        margin-bottom: 22px;
+      }
+
+      .products {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+
+      .product {
+        background: var(--paper);
+        padding: 24px;
+        min-height: 155px;
+        border: 1px solid transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: 0.3s;
+        animation: appear 0.35s ease;
+      }
+
+      .product:hover {
+        border-color: #c6c3ad;
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px #2637290c;
+      }
+
+      .product h3 {
+        font: 500 21px "Playfair Display";
+        color: var(--green);
+      }
+
+      .product p {
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 10px 0 18px;
+      }
+
+      .bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .tags {
+        color: var(--olive);
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .price {
+        color: var(--brown);
+        font-weight: 700;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
+      .no-results {
+        display: none;
+        padding: 60px 15px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .info {
+        text-align: center;
+        padding: 35px 20px;
+        margin-top: 65px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 2;
+      }
+
+      .info strong {
+        color: var(--green);
+      }
+
+      footer {
+        background: var(--dark);
+        color: var(--cream);
+        text-align: center;
+        padding: 70px 20px;
+      }
+
+      footer h2 {
+        font: 400 42px "Playfair Display";
+        letter-spacing: 6px;
+      }
+
+      footer p {
+        color: #bdbcae;
+        font-size: 12px;
+        line-height: 2;
+        margin-top: 15px;
+      }
+
+      footer a {
+        display: inline-block;
+        color: #d4bd9c;
+        font-size: 11px;
+        letter-spacing: 2px;
+        margin-top: 25px;
+        text-decoration: none;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 850px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 35px;
+        }
+
+        .hero-image {
+          height: 370px;
+        }
+
+        .products {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 550px) {
+        header {
+          padding: 0 5%;
+        }
+
+        .header-right {
+          font-size: 8px;
+        }
+
+        .hero {
+          padding: 55px 6%;
+        }
+
+        .hero h1 {
+          font-size: 60px;
+        }
+
+        .hero-image {
+          height: 300px;
+        }
+
+        .story h2 {
+          font-size: 31px;
+        }
+
+        .menu {
+          padding: 55px 5%;
+        }
+
+        .heading h2 {
+          font-size: 41px;
+        }
+
+        .products {
+          grid-template-columns: 1fr;
+        }
+
+        .product {
+          min-height: 135px;
+        }
+
+        .section-label {
+          font-size: 29px;
+        }
+
+        .discount {
+          font-size: 9px;
+          line-height: 1.8;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        AFÁN
+        <small>EN LA CUADRA</small>
+      </div>
+      <div class="header-right">PANADERÍA · COCINA · CAFÉ</div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">LA PLATA · DESDE NUESTRA COCINA</span>
+        <h1>El tiempo<br />hace el sabor.</h1>
+        <p>
+          Panadería orgánica y de masa madre, cocina natural y café.
+          Ingredientes agroecológicos, fermentaciones largas y elaboración
+          artesanal de todos los días.
+        </p>
+        <a href="#carta" class="hero-button">DESCUBRÍ NUESTRA CARTA ↓</a>
+        <div class="hero-note">15% DE DESCUENTO ABONANDO EN EFECTIVO</div>
+      </div>
+
+      <img
+        class="hero-image"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSBpWWmMDjE-cvWIf8V3yixbaEflCaly3FkKf6K1gCgMIn7bQEBwCxtSs4&s=10"
+        alt="Pan artesanal"
+      />
+    </section>
+
+    <section class="story">
+      <span>NUESTRA FILOSOFÍA</span>
+      <h2>Lo bueno lleva su tiempo.</h2>
+      <p>
+        Trabajamos con masa madre, harinas agroecológicas
+        <br />y productos orgánicos o libres de agrotóxicos.
+      </p>
+    </section>
+
+    <div class="discount">
+      15% DE DESCUENTO ABONANDO EN EFECTIVO · EN LA TOTALIDAD DEL CONSUMO
+    </div>
+
+    <main class="menu" id="carta">
+      <div class="heading">
+        <span>AFÁN · EN LA CUADRA</span>
+        <h2>Nuestra carta</h2>
+        <p>Elegí algo rico para disfrutar.</p>
+      </div>
+
+      <input
+        class="search"
+        id="search"
+        type="search"
+        placeholder="Buscar un producto..."
+        aria-label="Buscar productos"
+      />
+
+      <nav class="categories" id="categories">
+        <button class="active" data-filter="todos">Todo</button>
+        <button data-filter="panaderia">Panadería</button>
+        <button data-filter="cocina">Cocina</button>
+        <button data-filter="pizza">Pizzas</button>
+        <button data-filter="postres">Postres</button>
+        <button data-filter="bebidas">Bebidas</button>
+        <button data-filter="cervezas">Cervezas</button>
+        <button data-filter="vinos">Vinos</button>
+        <button data-filter="aperitivos">Aperitivos</button>
+        <button data-filter="panes">Panes para llevar</button>
+      </nav>
+
+      <div id="menu-content"></div>
+
+      <div class="no-results" id="no-results">
+        No encontramos productos con esa búsqueda.
+      </div>
+
+      <div class="info">
+        <strong>Un detalle de Afán</strong><br />
+        Nuestros productos se elaboran artesanalmente.<br />
+        Algunos pueden no estar disponibles durante el día.<br />
+        <strong>15% de descuento abonando en efectivo.</strong>
+      </div>
+    </main>
+
+    <footer>
+      <h2>AFÁN</h2>
+      <p>EN LA CUADRA · LA PLATA</p>
+      <p>Panadería orgánica · Masa madre · Cocina · Café</p>
+      <a
+        href="https://www.instagram.com/afan.enlacuadra/"
+        target="_blank"
+        rel="noopener"
+      >
+        INSTAGRAM ↗
+      </a>
+      <p style="margin-top: 30px">
+        Tres locales en La Plata<br />
+        3 y 875 · 49 y 50 · Plaza Rocha
+      </p>
+    </footer>
+
+    <script>
+      const sections = [
+        {
+          id: "panaderia",
+          title: "Panadería y bollería",
+          items: [
+            [
+              "Laminado especial del día",
+              "Vigilante de pastelera de chocolate y frutos rojos / pan de muerto relleno.",
+              6500,
+            ],
+            ["Medialuna", "", 4000],
+            ["Medialuna salada", "Harinas orgánicas y manteca vegetal.", 4000],
+            ["Croissant", "", 4000],
+            ["Croissant con chocolate", "", 4800],
+            ["Rombo con pastelera y dulce de leche", "", 5900],
+            [
+              "Trenza con pastelera",
+              "Laminado con pastelera y chocolate rallado.",
+              5500,
+            ],
+            ["Vigilante", "Membrillo y pastelera de cajú.", 4500],
+            ["Roll con dulce de leche", "", 5200],
+            ["Roll relleno", "Curd de limón y fruta.", 6500],
+            ["Roll con chips de chocolate y nuez", "", 4700],
+            ["Roll de canela", "", 3500],
+            [
+              "Roll de canela con frosting",
+              "Tofu, salsa de chocolate y almendra.",
+              6500,
+            ],
+            ["Bastón de queso", "Quesos agroecológicos.", 5500],
+            ["Scon dulce", "Arándanos y ciruela.", 3100],
+            ["Scon de queso y hierbas", "", 3500],
+            ["Chipá", "130 g. Mandioca y quesos agroecológicos.", 5900],
+            [
+              "Budín de zanahoria",
+              "Frosting de tofu, nuez y naranja confitada.",
+              5800,
+            ],
+            ["Budín de chocolate", "Chocolate, banana y nuez.", 5800],
+            ["Cookie", "Masa madre, coco y chocolate.", 6000],
+            [
+              "Pastafrola de membrillo",
+              "Harina de trigo y sarraceno agroecológicas.",
+              7500,
+            ],
+            ["Pastafrola de batata", "Con peras y nueces.", 7500],
+            ["Pepa", "Dulce de tomate artesanal. Sin gluten.", 4800],
+            ["Alfajor de dulce de leche y maní", "", 6100],
+            ["Alfajor de chocolate", "Caramelo, almendras y dátiles.", 5800],
+          ],
+        },
+        {
+          id: "cocina",
+          title: "Cocina natural",
+          items: [
+            [
+              "Focaccia de masa madre",
+              "Harina agroecológica y aceite de oliva.",
+              4100,
+            ],
+            ["Focaccia especial", "Ingredientes del día.", 5900],
+            ["Tostadas de masa madre", "Dos dips a elección.", 8000],
+            [
+              "Tostón de masa madre",
+              "Stracciatella, tomates asados, huevo poché y tajín.",
+              12000,
+            ],
+            [
+              "Tostada de centeno",
+              "Queso de semillas, tofu, palta y semillas.",
+              12000,
+            ],
+            [
+              "Tostadas francesas",
+              "Mermelada, miel y frutas de estación.",
+              14000,
+            ],
+            ["Omelette de huevos", "Espárragos y pan de masa madre.", 14000],
+            ["Huevos revueltos", "Tomates cherry, palta y tostada.", 13000],
+            [
+              "Tofu revuelto",
+              "Pasta de maní, tomates, palta y tostada.",
+              14000,
+            ],
+            ["Tostado integral", "Gouda orgánico y tomate.", 10900],
+            ["Tostado de medialuna", "Gouda, tomate y rúcula.", 9000],
+            ["Sánguche de croissant", "Mozzarella, palta y rúcula.", 9000],
+            ["Sánguche de chipá", "Gouda, mermelada de tomate y rúcula.", 9500],
+            [
+              "Sánguche de bagel",
+              "Queso untable, rúcula, tomate y palta.",
+              12000,
+            ],
+            [
+              "Sánguche de huevo y queso",
+              "Pan de masa madre y huevos orgánicos.",
+              12000,
+            ],
+            [
+              "Sánguche de hongos y quesos",
+              "Pan de zapallo, hongos y chutney de pera.",
+              15000,
+            ],
+            [
+              "Sánguche fresco",
+              "Focaccia, queso, tomate, palta y rúcula.",
+              18000,
+            ],
+            [
+              "Sánguche de faláfel",
+              "Ciabatta, faláfel, hummus y vegetales.",
+              18000,
+            ],
+            [
+              "Sánguche de bife de tofu",
+              "Tomates secos, rúcula y pesto.",
+              18000,
+            ],
+            ["Hummus", "Garbanzos, pan de masa madre y crackers.", 13000],
+            ["Babaganoush", "Berenjena, pan y crackers.", 14000],
+            [
+              "Degustación de quesos",
+              "Selección de quesos artesanales.",
+              27000,
+            ],
+            ["Fainá", "Tomate cherry, coliflor y stracciatella.", 13000],
+            [
+              "Plato Afán",
+              "Arroz yamaní, vegetales, hummus y fermentos.",
+              22000,
+            ],
+            ["Milanesas de gírgolas", "Con ensalada del día o papas.", 22000],
+            ["Ensalada tibia", "Quinoa, palta, hummus, hongos y tofu.", 22000],
+            [
+              "Omelette relleno",
+              "Harina de garbanzos, hongos y queso de semillas.",
+              20000,
+            ],
+            ["Tarta de zapallo", "Con ensalada del día o papas.", 18000],
+            ["Tarta de hongos", "Con ensalada del día o papas.", 18000],
+            ["Tarta de brócoli", "Con ensalada del día o papas.", 18000],
+          ],
+        },
+        {
+          id: "pizza",
+          title: "Pizzas de masa madre",
+          subtitle: "Estilo napolitano · 12 a 15 hs y 20 a 23:45 hs.",
+          items: [
+            [
+              "Integral tres quesos y alcaucil",
+              "Gouda, fior di latte y parmesano.",
+              25000,
+            ],
+            ["Margarita", "Tomate, fior di latte y albahaca.", 24000],
+            ["Napolitana", "Tomates cherry, ajo asado y albahaca.", 24000],
+            ["Roquefort", "Nuez y cebolla morada.", 24000],
+            ["Stracciatella", "Pesto y ralladura de limón.", 25000],
+            ["Roquefort y remolacha", "Con girasol caramelizado.", 24000],
+            [
+              "Cuatro quesos",
+              "Mozzarella, parmesano, gouda y provolone.",
+              25000,
+            ],
+            [
+              "Integral de vegetales",
+              "Vegetales asados y salsa huancaína.",
+              25000,
+            ],
+            ["Tres quesos y hongos", "Hongos y cebolla morada.", 25000],
+            ["Queso de cabra y peras", "Peras asadas.", 25000],
+            ["Pesto", "Tomates secos y provolone.", 24000],
+            ["Vegana", "Queso de cajú y variedad de hongos.", 25000],
+          ],
+        },
+        {
+          id: "postres",
+          title: "Postres",
+          items: [
+            ["Flan con crema", "Flan de coco, crema de cajú y praliné.", 12000],
+            [
+              "Torta vasca vegana",
+              "Cajú, tofu, chocolate, batata y naranja.",
+              15000,
+            ],
+            ["Mousse de chocolate", "Zapallo y chocolate orgánico.", 14000],
+          ],
+        },
+        {
+          id: "bebidas",
+          title: "Bebidas sin alcohol",
+          items: [
+            ["Mate", "500 ml. Yerba orgánica.", 6000],
+            ["Espresso / cortado", "", 4300],
+            ["Largo / largo cortado", "", 4700],
+            ["Lágrima", "", 4500],
+            ["Macchiato", "", 4700],
+            ["Café con leche", "Opción taza de 430 ml.", 5200],
+            ["Cappuccino", "Opción taza de 430 ml.", 5500],
+            ["Mocaccino", "", 5700],
+            ["Café con leche y caramelo", "", 5400],
+            ["Café con leche y dulce de leche", "", 5500],
+            ["Chocolate caliente", "", 6500],
+            ["Café con leche frío", "", 5250],
+            ["Cappuccino frío", "", 5500],
+            ["Cold brew", "", 4900],
+            ["Café cítrico frío", "Pomelo, naranja y cold brew.", 5500],
+            ["Matcha latte frío", "", 5500],
+            ["Chocolatada fría", "", 6500],
+            ["Matcha latte", "", 5500],
+            ["Té Inti Zen", "Variedades a elección.", 3700],
+            ["Té con leche", "", 3900],
+            ["Kombucha", "Hibiscus.", 5900],
+            ["Kéfir", "Artesanal.", 3500],
+            ["Té helado", "Té negro frío.", 3800],
+            ["Exprimido de naranjas orgánicas", "", 6100],
+            ["Jugo de hibiscus", "Naranja, soda y almíbar.", 6300],
+            ["Jugo energizante", "Naranja, zanahoria, jengibre y maca.", 6500],
+            ["Jugo detox", "Frutas, naranja, pepino y espinaca.", 6500],
+            [
+              "Jugo cítrico dorado",
+              "Limón, naranja, jengibre y cúrcuma.",
+              6500,
+            ],
+            ["Jugo rojo vital", "Zanahoria, pepino, pomelo y naranja.", 6500],
+            ["Pomelada 1 litro", "Vaso $6.000.", 14000],
+            ["Limonada 1 litro", "Jengibre y menta. Vaso $5.500.", 13000],
+            ["Soda", "Sifón de 500 cc.", 2850],
+          ],
+        },
+        {
+          id: "cervezas",
+          title: "Cervezas",
+          items: [
+            ["Golden", "Cinco Sabios · 473 cc.", 8000],
+            ["IPA", "Cinco Sabios · 473 cc.", 8500],
+            ["Porter", "Cinco Sabios · 473 cc.", 8500],
+            ["Irish", "Cinco Sabios · 473 cc.", 8500],
+            ["Heineken", "", 6500],
+          ],
+        },
+        {
+          id: "vinos",
+          title: "Vinos naturales",
+          items: [
+            ["Copa Tinto · Tempranillo Afán", "Canopus.", 5500],
+            ["Copa Blanco · Criollas Blancas", "Maida.", 6500],
+            ["Tempranillo Afán", "Canopus.", 20000],
+            ["Malbec Gran Afán", "Canopus.", 40000],
+            ["Malbec Maida", "Los Dragones.", 27500],
+            ["Malbec Y La Nave Va", "Canopus.", 58000],
+            ["Malbec La Nave Va sin sulfitos", "Canopus.", 58000],
+            ["Malbec sin sulfitos", "Los Dragones.", 62000],
+            ["Malbec De Sed", "Canopus.", 38000],
+            ["Aglianico Explore", "Krontiras.", 35000],
+            ["Tempranillo Tempra", "Canopus.", 50000],
+            ["Tinto Cara Sur", "", 34000],
+            ["Criollas tintas Maida", "Los Dragones.", 27500],
+            ["Rosado Cara Sur", "", 34000],
+            ["Rosado Alpamanta Breva", "", 22000],
+            ["Rosado Pintom Subversivo", "Canopus.", 50000],
+            ["Naranjo Cara Sur", "", 34000],
+            ["Naranjo Maida", "Los Dragones.", 27500],
+            ["Blanco Torrontés Cara Sur", "", 34000],
+            ["Blanco Criollas Blancas Maida", "Los Dragones.", 27500],
+            ["Blanco Semillón Finca Martini", "Canopus.", 38000],
+            ["Blanco FEP Semillón", "Canopus.", 32000],
+            ["Blanco FEP Sauvignon Blanc", "Canopus.", 36000],
+            ["Pet Nat Kung Fu", "Riccitelli.", 25000],
+            ["Pet Nat NOX", "Canopus.", 34000],
+          ],
+        },
+        {
+          id: "aperitivos",
+          title: "Aperitivos",
+          items: [
+            ["Gin Tonic", "Gin, tónica y tópico a elección.", 8000],
+            ["Gin macerado", "Naranja, almendras y miel.", 8000],
+            ["Gin Kombucha", "Gin, kombucha y tópico.", 9000],
+            ["Vermucha", "Vermú y kombucha.", 9000],
+            ["Vermú La Fuerza", "Rosso, Sideral o Blanco.", 7000],
+            ["Aperol", "Espumante, soda y naranja.", 9000],
+            ["Fernet", "", 8000],
+            ["Campari", "", 8000],
+          ],
+        },
+        {
+          id: "panes",
+          title: "Panes para llevar",
+          items: [
+            ["Baguette", "100% masa madre y harina agroecológica.", 6300],
+            ["Campo clásico", "100% masa madre.", 6300],
+            ["Campo integral 100%", "Trigo integral y espelta.", 7800],
+            [
+              "Campo semi integral",
+              "Trigo integral, blanco y sarraceno.",
+              6300,
+            ],
+            ["Campo multicereal", "Trigo, centeno y sarraceno.", 7200],
+            ["Molde lactal", "Masa madre, leche, manteca y huevo.", 8400],
+            ["Molde integral", "Con o sin semillas.", 7800],
+            ["Molde de zapallo", "Zapallo orgánico y semillas.", 7900],
+            ["Molde de centeno", "Pasas de uva y nueces.", 8900],
+            ["Molde sin gluten de arroz", "Arroz, avena y sarraceno.", 8400],
+            [
+              "Molde sin gluten de almendras",
+              "Masa madre de arroz y almendras.",
+              8400,
+            ],
+            [
+              "Molde especial del día",
+              "Ingrediente adicional de temporada.",
+              8600,
+            ],
+            ["Focaccia de masa madre", "", 4100],
+            ["Focaccia especial", "Ingredientes del día.", 5900],
+            ["Baguetín", "", 2300],
+            ["Ciabatta", "", 1800],
+            ["Ciabattas x 3", "", 4800],
+            ["Bagel", "", 2300],
+            ["Prepizza", "", 3200],
+            ["Prepizzas x 3", "", 8200],
+          ],
+        },
+      ];
+
+      const content = document.getElementById("menu-content");
+      const search = document.getElementById("search");
+      const noResults = document.getElementById("no-results");
+
+      let currentFilter = "todos";
+
+      function money(value) {
+        return "$ " + value.toLocaleString("es-AR");
+      }
+
+      function render() {
+        const term = search.value.trim().toLocaleLowerCase("es");
+
+        let found = 0;
+        content.innerHTML = "";
+
+        sections.forEach((section) => {
+          if (currentFilter !== "todos" && currentFilter !== section.id) return;
+
+          const items = section.items.filter((item) =>
+            (item[0] + " " + item[1]).toLocaleLowerCase("es").includes(term),
+          );
+
+          if (!items.length) return;
+
+          found += items.length;
+
+          const wrapper = document.createElement("section");
+
+          const title = document.createElement("h2");
+          title.className = "section-label";
+          title.textContent = section.title;
+          wrapper.appendChild(title);
+
+          if (section.subtitle) {
+            const subtitle = document.createElement("p");
+            subtitle.className = "section-subtitle";
+            subtitle.textContent = section.subtitle;
+            wrapper.appendChild(subtitle);
+          }
+
+          const grid = document.createElement("div");
+          grid.className = "products";
+
+          items.forEach((item) => {
+            const card = document.createElement("article");
+            card.className = "product";
+
+            const top = document.createElement("div");
+
+            const name = document.createElement("h3");
+            name.textContent = item[0];
+            top.appendChild(name);
+
+            if (item[1]) {
+              const description = document.createElement("p");
+              description.textContent = item[1];
+              top.appendChild(description);
+            }
+
+            const bottom = document.createElement("div");
+            bottom.className = "bottom";
+
+            const tag = document.createElement("span");
+            tag.className = "tags";
+            tag.textContent = "AFÁN · ARTESANAL";
+
+            const price = document.createElement("span");
+            price.className = "price";
+            price.textContent = money(item[2]);
+
+            bottom.append(tag, price);
+            card.append(top, bottom);
+            grid.appendChild(card);
+          });
+
+          wrapper.appendChild(grid);
+          content.appendChild(wrapper);
+        });
+
+        noResults.style.display = found ? "none" : "block";
+      }
+
+      document.querySelectorAll(".categories button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelector(".categories button.active")
+            .classList.remove("active");
+
+          button.classList.add("active");
+          currentFilter = button.dataset.filter;
+
+          render();
+        });
+      });
+
+      search.addEventListener("input", render);
+
+      render();
+    </script>
+  </body>
+</html>
